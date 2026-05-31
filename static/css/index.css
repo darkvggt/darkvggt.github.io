@@ -330,10 +330,14 @@ body {
 }
 
 /* Section Titles */
+.title {
+  color: #fb923c !important;
+}
+
 .title.is-3 {
   font-family: 'Inter', sans-serif !important;
   font-weight: 700 !important;
-  color: var(--text-primary);
+  color: #fb923c !important;
   margin-bottom: 2rem !important;
   position: relative;
   padding-bottom: 1rem;
