@@ -129,7 +129,7 @@ body {
 .publication-title {
     font-family: 'Inter', sans-serif !important;
     font-weight: 800 !important;
-    font-size: 2.5rem !important;
+    font-size: 3.0rem !important;
     background: linear-gradient(90deg, #ffffff, #ff6b35, #8b5cf6, #ff6b35, #ffffff);
     background-size: 300% 100%;
     -webkit-background-clip: text;
