@@ -33,7 +33,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   font-size: 16px;
-  background: linear-gradient(90deg, #020204 0%, #1e1e2e 18%, #1e1e2e 82%, #020204 100%);
+  background: linear-gradient(90deg, #020204 0%, #2a2a3e 18%, #2a2a3e 82%, #020204 100%);
   background-attachment: fixed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
