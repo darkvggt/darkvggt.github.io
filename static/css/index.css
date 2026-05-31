@@ -778,6 +778,18 @@ code {
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Scroll reveal animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Improved focus states for accessibility */
 .button:focus,
 .related-works-btn:focus,

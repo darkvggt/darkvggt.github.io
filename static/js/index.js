@@ -120,8 +120,6 @@ function setupVideoCarouselAutoplay() {
 }
 
 $(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
     var options = {
 		slidesToScroll: 1,
 		slidesToShow: 1,
@@ -131,12 +129,26 @@ $(document).ready(function() {
 		autoplaySpeed: 5000,
     }
 
-	// Initialize all div with carousel class
     var carousels = bulmaCarousel.attach('.carousel', options);
-	
     bulmaSlider.attach();
-    
-    // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
 
-})
+    // Scroll reveal
+    const sections = document.querySelectorAll('section:not(.hero:first-of-type), .hero.teaser');
+    sections.forEach(el => el.classList.add('scroll-animate'));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            } else {
+                const rect = entry.target.getBoundingClientRect();
+                if (rect.top > 0) {
+                    entry.target.classList.remove('is-visible');
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(el => observer.observe(el));
+});
