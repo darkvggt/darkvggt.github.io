@@ -317,13 +317,13 @@
       <figure style="margin-bottom:3rem;">
         <img src="static/images/darkvggt-vis1.png" alt="Qualitative comparison of nighttime 3D geometry estimation" style="width:100%;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
-          Qualitative comparison of nighttime 3D geometry estimation across Dark3R, VGGT, SEAR, and DarkVGGT. Red cameras indicate predicted poses. For RGB-T methods, we show RGB-textured and thermal-intensity-colored point-cloud reconstructions.
-          Qualitative comparison of nighttime 3D geometry estimation across Dark3R, VGGT, SEAR, and DarkVGGT.
+          Qualitative comparison of nighttime 3D geometry estimation across Dark3R, VGGT, SEAR, and DarkVGGT. Our method achieves more robust performance than RGB-only models designed for low-visibility scenes, such as the MASt3R-SfM-based Dark3R and our baseline VGGT. Furthermore, compared to SEAR, a concurrent RGB-T fusion model, DarkVGGT produces camera pose estimates better aligned with ground truth and yields geometrically consistent dense 3D point cloud reconstructions.
+        </figcaption>
       </figure>
       <figure>
         <img src="static/images/darkvggt-vis2.png" alt="Reconstruction quality comparison between SEAR and DarkVGGT" style="width:100%;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
-          More reconstruction quality comparison between SEAR and our method.
+          More reconstruction quality comparison between SEAR and our method. The proposed thermal-to-RGB fusion strategy routes only geometry-relevant thermal cues into the RGB branch, enabling consistently superior 3D geometry estimation in dark scenes compared to SEAR. The performance gap is particularly pronounced in severely dark environments such as indoor scenes with aggressive low-light conditions.
         </figcaption>
       </figure>
     </div>
