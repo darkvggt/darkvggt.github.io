@@ -317,14 +317,14 @@
       <figure style="margin-bottom:3rem;">
         <img src="static/images/darkvggt-vis1.png" alt="Qualitative comparison of nighttime 3D geometry estimation" style="width:100%;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
-          Qualitative comparison of nighttime 3D geometry estimation across Dark3R, VGGT, SEAR, and DarkVGGT. Our method achieves more robust performance than RGB-only models designed for low-visibility scenes, such as the MASt3R-SfM-based Dark3R and our baseline VGGT. Furthermore, compared to SEAR, a concurrent RGB-T fusion model, DarkVGGT produces camera pose estimates better aligned with ground truth and yields geometrically consistent dense 3D point cloud reconstructions.
+          <strong style="color:#fb923c;">Qualitative comparison of nighttime 3D geometry estimation.</strong> Our method achieves more robust performance than RGB-only models designed for low-visibility scenes, such as the MASt3R-SfM-based Dark3R and our baseline VGGT. Furthermore, compared to SEAR, a concurrent RGB-T fusion model, DarkVGGT produces camera pose estimates better aligned with ground truth and yields geometrically consistent dense 3D point cloud reconstructions.
         </figcaption>
       </figure>
       <figure>
-        <img src="static/images/darkvggt-vis2.png" alt="Reconstruction quality comparison between SEAR and DarkVGGT" style="width:100%;border-radius:12px;" loading="lazy"/>
+        <img src="static/images/darkvggt-vis2.png" alt="Reconstruction quality comparison between SEAR and DarkVGGT" style="width:85%;display:block;margin:0 auto;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
           More reconstruction quality comparison between SEAR and our method. The proposed thermal-to-RGB fusion strategy routes only geometry-relevant thermal cues into the RGB branch, enabling consistently superior 3D geometry estimation in dark scenes compared to SEAR. The performance gap is particularly pronounced in severely dark environments such as indoor scenes with aggressive low-light conditions.
-        </figcaption>
+          <strong style="color:#fb923c;">More reconstruction quality comparison between SEAR and our method.</strong> The proposed thermal-to-RGB fusion strategy routes only geometry-relevant thermal cues into the RGB branch, enabling consistently superior 3D geometry estimation in dark scenes compared to SEAR. The performance gap is particularly pronounced in severely dark environments such as indoor scenes with aggressive low-light conditions.
       </figure>
     </div>
   </div>
@@ -338,7 +338,7 @@
     <h2 class="title is-3 has-text-centered">Methodology</h2>
     <div class="content">
       <figure>
-        <img src="static/images/darkvggt-method.png" alt="Overview of the DarkVGGT framework" style="width:100%;border-radius:12px;" loading="lazy"/>
+        <img src="static/images/darkvggt-method.png" alt="Overview of the DarkVGGT framework" style="width:85%;display:block;margin:0 auto;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
           <strong style="color:#fb923c;">Overview of the DarkVGGT framework.</strong> DarkVGGT factorizes thermal embeddings into emissive and reflective components using a high-pass (HP) filter and projection branches. Building on this factorization, geometry-shared thermal routing (GSTR) separates shared and private thermal tokens, and selectively injects geometry-relevant thermal content into the RGB stream.
         </figcaption>
