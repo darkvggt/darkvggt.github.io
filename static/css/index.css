@@ -33,7 +33,8 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   font-size: 16px;
-  background: #050508;
+  background: linear-gradient(90deg, #020204 0%, #0f0f1a 18%, #0f0f1a 82%, #020204 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,8 +43,7 @@ body {
 #main-content {
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #0f0f1a 0%, #0a0a14 100%);
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
+  background: transparent;
 }
 
 
