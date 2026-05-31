@@ -128,10 +128,12 @@ body {
 
 @keyframes neonPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 4px #ff6b35) drop-shadow(0 0 10px #ff6b35) drop-shadow(0 0 20px #8b5cf6);
+    -webkit-text-fill-color: #ff6b35;
+    text-shadow: 0 0 6px #ff6b35, 0 0 14px #ff6b35, 0 0 28px rgba(139, 92, 246, 0.8);
   }
   50% {
-    filter: drop-shadow(0 0 8px #8b5cf6) drop-shadow(0 0 18px #8b5cf6) drop-shadow(0 0 32px #ff6b35);
+    -webkit-text-fill-color: #c084fc;
+    text-shadow: 0 0 6px #8b5cf6, 0 0 14px #8b5cf6, 0 0 28px rgba(255, 107, 53, 0.8);
   }
 }
 
@@ -149,6 +151,7 @@ body {
 }
 
 .darkvggt-neon {
+    -webkit-text-fill-color: #ff6b35;
     animation: neonPulse 3s ease-in-out infinite;
     display: inline;
 }
