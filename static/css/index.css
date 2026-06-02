@@ -140,8 +140,9 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: titleGradientShift 6s ease infinite;
-    margin-bottom: 2rem !important;
-    line-height: 1.1 !important;
+    margin-bottom: 2.5rem !important;
+    line-height: 1.25 !important;
+    padding-bottom: 0.1em !important;
 }
 
 
