@@ -91,6 +91,15 @@
   <!-- Fonts - Optimized loading -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -280,6 +289,9 @@
     </div>
   </div>
 </section>
+<div style="text-align:center; padding: 0.5rem 1rem 0.8rem; font-size:1rem; color:#64748b;">
+  While <strong style="color:#1e293b;">VGGT</strong> fails in dark scenes due to degraded RGB cues, <strong style="color:#8b5cf6;">DarkVGGT</strong> leverages thermal geometry to produce reliable 3D reconstruction.
+</div>
 <!-- End demo videos -->
 
 <!-- Paper abstract -->
@@ -306,22 +318,34 @@
 </section>
 <!-- End paper abstract -->
 
-
-<!-- 3D Geometry Estimation Performance -->
+<!-- 3D Viewer -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">3D Geometry Estimation Performance</h2>
+    <h2 class="title is-3 has-text-centered">Interactive 3D Demo</h2>
+    <p style="text-align:center; color:#475569; margin-bottom:1.5rem;">
+      Compare VGGT base and DarkVGGT point cloud reconstructions. Drag to rotate, scroll to zoom.
+    </p>
+    <div id="viewer3d-root"></div>
+  </div>
+</section>
+<!-- End 3D Viewer -->
+
+
+<!-- Qualitative Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Qualitative Visualization</h2>
     <div class="content">
       <figure style="margin-bottom:3rem;">
         <img src="static/images/darkvggt-vis1.png" alt="Qualitative comparison of nighttime 3D geometry estimation" style="width:100%;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
-          <strong style="color:#fb923c;">Qualitative comparison of nighttime 3D geometry estimation.</strong> Our method achieves more robust performance than RGB-only models designed for low-visibility scenes, such as the MASt3R-SfM-based Dark3R and our baseline VGGT. Furthermore, compared to SEAR, a concurrent RGB-T fusion model, DarkVGGT produces camera pose estimates better aligned with ground truth and yields geometrically consistent dense 3D point cloud reconstructions.
+          <strong style="color:#fb923c;">Qualitative comparison of nighttime 3D geometry estimation.</strong> DarkVGGT outperforms RGB-only baselines (Dark3R, VGGT) and produces more GT-aligned poses and geometrically consistent point clouds than the RGB-T model SEAR.
         </figcaption>
       </figure>
       <figure>
         <img src="static/images/darkvggt-vis2.png" alt="Reconstruction quality comparison between SEAR and DarkVGGT" style="width:85%;display:block;margin:0 auto;border-radius:12px;" loading="lazy"/>
         <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
-          <strong style="color:#fb923c;">More reconstruction quality comparison between SEAR and our method.</strong> The proposed thermal-to-RGB fusion strategy routes only geometry-relevant thermal cues into the RGB branch, enabling consistently superior 3D geometry estimation in dark scenes compared to SEAR. The performance gap is particularly pronounced in severely dark environments such as indoor scenes with aggressive low-light conditions.
+          <strong style="color:#fb923c;">More reconstruction quality vs. SEAR.</strong> By routing only geometry-relevant thermal cues into the RGB branch, DarkVGGT consistently surpasses SEAR, with the advantage most evident in aggressively dark indoor scenes.
         </figcaption>
       </figure>
     </div>
@@ -362,9 +386,16 @@
           <strong style="color:#fb923c;">Depth and camera pose estimation performance on well-lit scenes.</strong> The proposed thermal-to-RGB feature fusion modules selectively route only geometry-relevant information from the thermal stream, minimizing performance degradation on well-lit scenes while improving 3D geometry estimation under dark conditions.
         </figcaption>
       </figure>
+      <figure style="margin-top:3rem;">
+        <img src="static/images/ablation.png" alt="Ablation study" style="width:100%;border-radius:12px;" loading="lazy"/>
+        <figcaption style="margin-top:1rem;text-align:left;color:#94a3b8;font-size:0.95rem;line-height:1.6;">
+          <strong style="color:#fb923c;">Ablation study.</strong> Effectiveness of each proposed module and computational cost for RGB-T multimodal nighttime 3D geometry estimation.
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
@@ -406,6 +437,8 @@
     </div>
   </div>
 </footer>
+
+<script type="module" src="static/js/viewer3d.js"></script>
 
 <!-- Statcounter tracking code -->
   
