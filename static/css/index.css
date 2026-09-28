@@ -737,27 +737,117 @@ code {
   }
 }
 
-@keyframes underReviewGlow {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Venue lockup: NeurIPS logo + year, sized so the year matches the wordmark's cap height and baseline */
+/* Silver sheen sweep: --sheen-x is animated on the lockup and inherited, so the logo
+   and the year draw the same band in one shared coordinate frame (lockup-sized box). */
+@property --sheen-x {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: -200px;
 }
 
-.under-review-badge {
-  display: inline-block;
-  margin-top: 0.6rem;
-  padding: 0.3rem 1rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  background: linear-gradient(90deg, #ff6b35, #c084fc, #8b5cf6, #c084fc, #ff6b35);
-  background-size: 300% 100%;
+.venue-lockup {
+  --venue-h: 60px;
+  --logo-w: calc(var(--venue-h) * 382 / 144);
+  --gap: calc(var(--venue-h) * 0.2);
+  --year-top: calc(var(--venue-h) * 0.28);
+  --sheen-frame: calc(var(--venue-h) * 4.4) var(--venue-h);
+  --sheen-x: calc(var(--venue-h) * -1.2);
+  --year-color: #4a3a86; /* a touch brighter than the wordmark (#372763) */
+  --sheen: linear-gradient(110deg,
+    transparent calc(var(--sheen-x) - var(--venue-h) * 0.6),
+    rgba(196, 202, 214, 0.5) calc(var(--sheen-x) - var(--venue-h) * 0.22),
+    rgba(250, 251, 253, 0.95) var(--sheen-x),
+    rgba(196, 202, 214, 0.5) calc(var(--sheen-x) + var(--venue-h) * 0.22),
+    transparent calc(var(--sheen-x) + var(--venue-h) * 0.6));
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--gap);
+  margin-top: 1.4rem;
+  vertical-align: top;
+  text-decoration: none;
+  animation: venueSheen 2.5s infinite;
+}
+
+/* Tighter gap between the lockup and the Paper/arXiv/Code buttons below */
+.publication-authors:has(> .venue-lockup) {
+  margin-bottom: 1rem;
+}
+
+/* Opt out of the author-link hover underline/transition inherited from .publication-authors a */
+.publication-authors a.venue-lockup {
+  transition: none;
+}
+
+.publication-authors a.venue-lockup::after {
+  content: none;
+}
+
+/* No focus box on the venue lockup (mouse or keyboard) */
+.venue-lockup:focus,
+.venue-lockup:focus-visible {
+  outline: none;
+}
+
+@keyframes venueSheen {
+  0% {
+    --sheen-x: calc(var(--venue-h) * -1.2);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.25, 1);
+  }
+  45%, 100% {
+    --sheen-x: calc(var(--venue-h) * 5.6);
+  }
+}
+
+.venue-logo-wrap {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+.venue-logo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--sheen) 0 0 / var(--sheen-frame) no-repeat;
+  -webkit-mask: url('../images/neurips-logo.png') center / 100% 100% no-repeat;
+  mask: url('../images/neurips-logo.png') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.venue-logo {
+  display: block;
+  height: var(--venue-h);
+  width: auto;
+}
+
+.venue-year {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 560;
+  font-size: calc(var(--venue-h) * 0.593);
+  line-height: 1;
+  margin-top: var(--year-top);
+  letter-spacing: 0.01em;
+  color: var(--year-color);
+  background:
+    var(--sheen) calc(-1 * (var(--logo-w) + var(--gap))) calc(-1 * var(--year-top)) / var(--sheen-frame) no-repeat,
+    linear-gradient(var(--year-color), var(--year-color));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: underReviewGlow 3s ease infinite;
-  border: 2px solid rgba(139, 92, 246, 0.5);
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venue-lockup {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .venue-lockup {
+    --venue-h: 48px;
+  }
 }
 
 /* Animation for page load */
